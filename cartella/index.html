@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorpresa!</title>
+    <style>
+        /* Setup base per mobile */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Spazio per la foto */
+        .photo-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #ddd;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .buttons-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            width: 150px;
+        }
+
+        /* Stile tasto Sì */
+        #si-btn {
+            background-color: #ff4d4d;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Stile tasto No */
+        #no-btn {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="photo-placeholder">
+            <img src="foto.png" alt="Foto del regalo">
+        </div>
+
+        <h2>È arrivato in tempo il regalo?</h2>
+
+        <div class="buttons-container">
+            <button id="si-btn">Sì</button>
+            <button id="no-btn">No</button>
+        </div>
+    </div>
+
+    <script>
+        const siBtn = document.getElementById('si-btn');
+        const noBtn = document.getElementById('no-btn');
+        let scale = 1;
+
+        // Funzione per ingrandire il tasto "No" quando clicchi "Sì"
+        siBtn.addEventListener('click', () => {
+            scale += 0.5; // Aumenta la dimensione del 50% ad ogni click
+            noBtn.style.transform = `scale(${scale})`;
+            
+            // Opzionale: sposta il tasto Sì leggermente per fare spazio
+            if (scale > 3) {
+                siBtn.style.opacity = "0.5";
+            }
+        });
+
+        // Messaggio finale quando clicca "No"
+        noBtn.addEventListener('click', () => {
+            alert("Esattoooo, arriverà! 😜");
+        });
+    </script>
+
+</body>
+</html>
